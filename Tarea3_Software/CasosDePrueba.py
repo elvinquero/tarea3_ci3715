@@ -27,7 +27,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 1)
 
 
-	#Caso 4 esquina superior clave
+	#Caso 3 esquina superior clave
 	def testClaveMas16(self):
 		seguridad = Seguridad()
 		email = "anitaaaa@gmail.com"
@@ -35,9 +35,8 @@ class TestSeguridad(unittest.TestCase):
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
-		print("Caso4: ", nuevoUsuario[2])
 		
-	#Caso 5 esquina inferior clave registro
+	#Caso 4 esquina inferior clave registro
 	def testClaveMenos8(self):
 		seguridad = Seguridad()
 		email = "jose@gmail.com"
@@ -45,4 +44,3 @@ class TestSeguridad(unittest.TestCase):
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
-		print("Caso5: ", nuevoUsuario[2])
