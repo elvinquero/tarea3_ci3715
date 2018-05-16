@@ -25,3 +25,24 @@ class TestSeguridad(unittest.TestCase):
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 1)
+
+
+	#Caso 4 esquina superior clave
+	def testClaveMas16(self):
+		seguridad = Seguridad()
+		email = "anitaaaa@gmail.com"
+		clave= "holaholaholahola1"
+		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
+		
+		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
+		print("Caso4: ", nuevoUsuario[2])
+		
+	#Caso 5 esquina inferior clave registro
+	def testClaveMenos8(self):
+		seguridad = Seguridad()
+		email = "jose@gmail.com"
+		clave= "holahol"
+		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
+		
+		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
+		print("Caso5: ", nuevoUsuario[2])
