@@ -7,21 +7,21 @@ import unittest
 from App.models import Seguridad
 
 class TestSeguridad(unittest.TestCase):
-	
-	#Caso 1 frontera inferior clave
+		
+	#Caso 1 frontera inferior clave registro
 	def testClave8(self):
+		seguridad = Seguridad()
 		email = "ana@gmail.com"
 		clave= "holahola"
-		seguridad = Seguridad()
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 
-		assert (nuevoUsuario[0] == 2 and nuevoUsuario[1] == 2)
+		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 1)
 		
-	#Caso 2 frontera superior clave
+	#Caso 2 frontera superior clave registro
 	def testClave16(self):
+		seguridad = Seguridad()
 		email = "anita@gmail.com"
 		clave= "holaholaholahola"
-		seguridad = Seguridad()
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
-		assert (nuevoUsuario[0] == 2 and nuevoUsuario[1] == 2)
+		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 1)
