@@ -49,10 +49,12 @@ class Seguridad:
 				return [0, "Correo electronico invalido: debe colocar @"]
 			else:
 				return [0, "Correo electronico invalido: no puede colocar mas de un @"]
+		elif seccionesArroba[0] == "" or seccionesArroba[1] == "":
+			return [0, "Correo electronico invalido"]
 		
 		seccion1 = seccionesArroba[0]
 		seccionesPunto = seccionesArroba[1].split(".")
-		if len(seccionesPunto) < 2:
+		if len(seccionesPunto) < 2 or seccionesPunto[0] == "" or seccionesPunto[1] == "":
 			return [0, "Correo electronico invalido: debe colocar el dominio"]
 
 		for i in range(len(seccion1)):

@@ -108,7 +108,7 @@ class TestSeguridad(unittest.TestCase):
 
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 0)
 	
-	#Caso 12 clave sin digitos registro
+	#Caso 12 esquina inferior clave registro
 	def testClaveSinDig(self):
 		seguridad = Seguridad()
 		email = "aura@gmail.com"
@@ -117,7 +117,7 @@ class TestSeguridad(unittest.TestCase):
 		
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
 
-	#Caso 13 clave sin mayusculas registro
+	#Caso 13 esquina inferior clave registro
 	def testClaveSinMayus(self):
 		seguridad = Seguridad()
 		email = "aura@gmail.com"
@@ -127,7 +127,7 @@ class TestSeguridad(unittest.TestCase):
 		
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
 		
-	#Caso 14 clave sin mayusculas registro
+	#Caso 14 esquina inferior clave registro
 	def testClaveSinMinus(self):
 		seguridad = Seguridad()
 		email = "juan123@gmail.com"
@@ -160,7 +160,7 @@ class TestSeguridad(unittest.TestCase):
 		
 		assert (nuevoUsuario[0] == -1 and nuevoUsuario[1] == 0)
 		
-	#Caso 17 malicia ingreso
+	#Caso 17 malicioso ingreso
 	def testNoRegistrado(self):
 		seguridad = Seguridad()
 		email = "roxanne@gmail.com"
@@ -170,7 +170,7 @@ class TestSeguridad(unittest.TestCase):
 		
 		assert (nuevoIngreso[0] == 0)
 		
-	#Caso 18 esquina clave ingreso
+	#Caso 18 malicioso ingreso
 	def testIngresoClaveIncorrecta(self):
 		seguridad = Seguridad()
 		email = "alex@gmail.com"
@@ -183,7 +183,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 1 and
 				nuevoIngreso[0] == 0)
 		
-	#Caso 18 esquina clave ingreso
+	#Caso 18 esquina superior de clave ingreso
 	def testIngresoClaveInvalida(self):
 		seguridad = Seguridad()
 		email = "alex@gmail.com"
@@ -196,11 +196,14 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 1 and
 				nuevoIngreso[0] == 0)
 		
-	#Caso 20 esquina ingreso
+	#Caso 20 esquina superior ingreso
 	def testIngresoCorreoYClaveCaractesEsp(self):
 		seguridad = Seguridad()
 		email = "aur%a@hotmailcom"
 		clave = "hola-hola"
 		nuevoIngreso = seguridad.IngresarUsuario(email, clave)
 		
-		assert (nuevoIngreso[0] == 0)
+		assert (nuevoIngreso[0] == 0)	
+
+if __name__ == "__main__":  
+	unittest.main()   
