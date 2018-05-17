@@ -118,4 +118,16 @@ class Seguridad:
 		else:
 			return [verificacion[0], verificacion[1], verificacion[2] + "\n" + verificacion[3]]
 
-		
+	def IngresarUsuario(self, email, clave):
+		verificacion = self.verificar(email, clave)
+		try:
+			assert(verificacion[0] == 1 and verificacion[1] == 1)
+			if ( email in self.usuariosRegistrados ):
+				if (self.usuariosRegistrados[email] == self.encriptar(clave) ):
+					return [1, "Usuario aceptado"]
+				else:
+					return [0, "Clave invalida"]
+			else:
+				return [0, "Usuario invalido"]
+		except:
+			return [0, verificacion[2] + " " + verificacion[3]]

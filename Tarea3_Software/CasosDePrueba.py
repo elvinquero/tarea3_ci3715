@@ -160,3 +160,12 @@ class TestSeguridad(unittest.TestCase):
 		
 		assert (nuevoUsuario[0] == -1 and nuevoUsuario[1] == 0)
 		
+	#Caso 17 malicia ingreso
+	def testNoRegistrado(self):
+		seguridad = Seguridad()
+		email = "roxanne@gmail.com"
+		clave = "laClave123"
+
+		nuevoIngreso = seguridad.IngresarUsuario(email, clave)
+		
+		assert (nuevoIngreso[0] == 0)
