@@ -105,12 +105,15 @@ class Seguridad:
 	
 	def registrarUsuario(self, email, clave1, clave2):
 		if (clave1 != clave2):
-			return [0, 0, "Las claves no coinciden"]
+			return [-1, 0, "Las claves no coinciden"]
 			
 		verificacion = self.verificar(email, clave1)
 		if verificacion[0] == 1 and verificacion[1] == 1:
-			self.usuariosRegistrados[email] = self.encriptar( clave1)
-			return [1, 1, "Usuario registrado exitosamente"]
+			if email not in self.usuariosRegistrados: 
+				self.usuariosRegistrados[email] = self.encriptar( clave1)
+				return [1, 1, "Usuario registrado exitosamente"]
+			else:
+				return [0, -1, "El usuario ya existe"]
 		
 		else:
 			return [verificacion[0], verificacion[1], verificacion[2] + "\n" + verificacion[3]]

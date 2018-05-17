@@ -136,3 +136,27 @@ class TestSeguridad(unittest.TestCase):
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
+		
+	#Caso 15 malicioso registro
+	def testCorreoRepetido(self):
+		seguridad = Seguridad()
+		email = "elvin@gmail.com"
+		clave1 = "ho1aCOMOesta"
+		clave2 = "0traCosa"
+		nuevoUsuario1 = seguridad.registrarUsuario(email, clave1, clave1)
+
+		nuevoUsuario2 = seguridad.registrarUsuario(email, clave2, clave2)
+
+		assert (nuevoUsuario1[0] == 1 and nuevoUsuario1[1] == 1 and
+				nuevoUsuario2[0] == 0 and nuevoUsuario2[1] == -1)
+
+	#Caso 16 malicioso registro
+	def testClavesDistintas(self):
+		seguridad = Seguridad()
+		email = "sandra@gmail.com"
+		clave1 = "prueba12A"
+		clave2 = "prueba21A"
+		nuevoUsuario = seguridad.registrarUsuario(email, clave1, clave2)
+		
+		assert (nuevoUsuario[0] == -1 and nuevoUsuario[1] == 0)
+		
