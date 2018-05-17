@@ -107,3 +107,32 @@ class TestSeguridad(unittest.TestCase):
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 0)
+	
+	#Caso 12 clave sin digitos registro
+	def testClaveSinDig(self):
+		seguridad = Seguridad()
+		email = "aura@gmail.com"
+		clave= "HOLAhola"	
+		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
+		
+		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
+
+	#Caso 13 clave sin mayusculas registro
+	def testClaveSinMayus(self):
+		seguridad = Seguridad()
+		email = "aura@gmail.com"
+		clave= "hola12hola"
+		
+		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
+		
+		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
+		
+	#Caso 14 clave sin mayusculas registro
+	def testClaveSinMinus(self):
+		seguridad = Seguridad()
+		email = "juan123@gmail.com"
+		clave= "HOLA1234"
+		
+		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
+		
+		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
