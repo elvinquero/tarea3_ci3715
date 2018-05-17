@@ -23,8 +23,29 @@ class Seguridad:
 				return [0, "Correo electronico invalido: debe colocar @"]
 			else:
 				return [0, "Correo electronico invalido: no puede colocar mas de un @"]
-		else:
-			return invalidos
+		
+		seccion1 = seccionesArroba[0]
+		seccionesPunto = seccionesArroba[1].split(".")
+		if len(seccionesPunto) < 2:
+			return [0, "Correo electronico invalido: debe colocar el dominio"]
+
+		for i in range(len(seccion1)):
+			caracter = seccion1[i]
+			if ( (not str.isdigit(caracter)) and (not str.isalpha(caracter)) and (caracter != ".") and (caracter != "_") and (caracter != "-") ):
+				invalidos.append(caracter)
+
+		for i in range(len(seccionesPunto)):
+			n = len(seccionesPunto[i])
+			for j in range(n):
+				caracter = seccionesPunto[i][j]
+				if ( (not str.isdigit(caracter)) and (not str.isalpha(caracter))):
+					invalidos.append(caracter)	
+		
+		if len(invalidos) != 2:
+			invalidos[0] = -1
+			invalidos[1] = "Correo electronico invalido: presenta caracteres no permitidos"
+		
+		return invalidos
 	
 	def verificar(self, email, clave):
 		validMail = 1
@@ -37,7 +58,10 @@ class Seguridad:
 			if charInvalidosMail[0] < 1:
 				validMail = 0
 				mensajeMail = charInvalidosMail[1]	
-				
+		else:
+			validMail = 0
+			mensajeMail = charInvalidosMail[1]
+			
 		if len(clave) < 8 or len(clave) > 16:
 			validKey = 0
 			mensajeKey = "Clave invalida: debe tener entre 8 y 16 caracteres"
