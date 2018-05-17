@@ -71,3 +71,22 @@ class TestSeguridad(unittest.TestCase):
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 1)
+	
+	#Caso 8 esquina inferior correo registro
+	def testCorreoSinPunto(self):
+		seguridad = Seguridad()
+		email = "paty@gmailcom"
+		clave= "holahola"
+		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
+		
+		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 1)
+
+	#Caso 9 esquina inferior correo registro
+	def testCorreoCaracteresEspeciales(self):
+		seguridad = Seguridad()
+		email = "sofia#97@gmail.com"
+		clave= "holahola"
+		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
+		
+		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 1)
+	
