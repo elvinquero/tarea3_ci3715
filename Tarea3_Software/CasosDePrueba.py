@@ -44,3 +44,12 @@ class TestSeguridad(unittest.TestCase):
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
+		
+	#Caso 5 valido registro
+	def testRegistroValido(self):
+		seguridad = Seguridad()
+		email = "angey@gmail.com"
+		clave= "hola1234"
+		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
+		
+		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 1)
