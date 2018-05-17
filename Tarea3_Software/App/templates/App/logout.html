@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" >
+{% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <title>Usuario</title>
+  
+  
+    {%load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}"/>
+
+  
+</head>
+
+<body>
+
+
+
+  	
+
+<form action="#" method="post">
+  <h2>Usuario</h2>
+
+		<p>
+                <a href="http://127.0.0.1:8000/home/">
+                    <input type="button" value="Logout" />
+                 </a>
+        {% csrf_token %} 
+		</p>
+		<p>
+		</p>
+		<p>
+            <a href="https://www.youtube.com/watch?v=9jI-z9QN6g8">
+                <input type="button" value="Mejor cancion del mundo" />
+             </a>
+            {% csrf_token %}
+		</p>
+	</form>
+
+
+
+
+</body>
+
+</html>

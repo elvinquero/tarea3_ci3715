@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en" >
+{% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <title>home</title>
+  
+  
+    {%load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}"/>
+
+  
+</head>
+
+<body>
+
+
+
+  	
+
+<form action="#" method="post">
+  <h2>Bienvenido</h2>
+
+		<p>
+                <a href="http://127.0.0.1:8000/correo/">
+                    <input type="button" value="Registrarse" />
+                 </a>
+        {% csrf_token %} 
+		</p>
+		<p>
+		</p>
+		<p>
+            <a href="http://127.0.0.1:8000/login/">
+                <input type="button" value="Ingresar" />
+             </a>
+            {% csrf_token %}
+		</p>
+	</form>
+
+
+
+
+</body>
+
+</html>

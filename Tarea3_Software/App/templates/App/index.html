@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en" >
+{% load static %}
+
+<head>
+  <meta charset="UTF-8">
+  <title>Registrarse</title>
+  
+  
+    {%load staticfiles %}
+    <link rel="stylesheet" href="{% static 'css/style1.css' %}"/>
+
+  
+</head>
+
+<body>
+
+
+{% if messages %}
+<ul class="messages">
+        {% for message in  messages %}
+        <li{% if message.tags %} class="{{message.tags}}"{%endif %}>{{message}} </li>
+        {% endfor  %}
+</ul>
+{% endif %}
+
+<ul class="messages">
+        <li class="{{validacion.0}}">{{validacion.0}}  {{validacion.1}} {{validacion.2}}</li>
+</ul>
+  	
+
+<form action="#" method="post">
+  <h2>Registrarse</h2>
+
+		<p>
+			<label for="Email" class="floatLabel">Correo</label>
+            <input id="Email" name="Email" type="text">
+            {% if validacion.0 != 1 %}
+                <span>{{ text }}</span>
+            {% endif %}
+            {% csrf_token %}
+		</p>
+		<p>
+			<label for="password" class="floatLabel">Contrasena</label>
+            <input id="password" name="password" type="password">
+            {% if validacion.1 != 1 %}
+                <span>{{ text }}</span>
+            {% endif %}
+            {% csrf_token %}
+		</p>
+		<p>
+			<label for="confirm_password" class="floatLabel">Confirmar Contrasena</label>
+            <input id="confirm_password" name="confirm_password" type="password">
+            {% if validacion.1 != 1 %}
+                <span>{{ text }}</span>
+            {% endif %}
+            {% csrf_token %}
+		</p>
+		<p>
+            <input type="submit" href="http://127.0.0.1:8000/correo/" value="Crear mi cuenta" id="submit">
+            {% csrf_token %}
+        </p>
+        <p>
+                <a href="http://127.0.0.1:8000/home/">
+                    <input type="button" value="Volver al home" />
+                 </a>
+                {% csrf_token %}
+            </p>
+	</form>
+
+
+
+
+</body>
+
+</html>
