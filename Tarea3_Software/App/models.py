@@ -21,9 +21,9 @@ class Seguridad:
 		minus = 0
 		for i in range(len(key)): 
 			caracter = key[i]
-			if str.isdigit(caracter):
+			if unicode.isdigit(caracter):
 				digitos += 1
-			elif str.isalpha(caracter):
+			elif unicode.isalpha(caracter):
 				if caracter.isupper():
 					mayus += 1
 				else:
@@ -57,14 +57,14 @@ class Seguridad:
 
 		for i in range(len(seccion1)):
 			caracter = seccion1[i]
-			if ( (not str.isdigit(caracter)) and (not str.isalpha(caracter)) and (caracter != ".") and (caracter != "_") and (caracter != "-") ):
+			if ( (not unicode.isdigit(caracter)) and (not unicode.isalpha(caracter)) and (caracter != ".") and (caracter != "_") and (caracter != "-") ):
 				invalidos.append(caracter)
 
 		for i in range(len(seccionesPunto)):
 			n = len(seccionesPunto[i])
 			for j in range(n):
 				caracter = seccionesPunto[i][j]
-				if ( (not str.isdigit(caracter)) and (not str.isalpha(caracter))):
+				if ( (not unicode.isdigit(caracter)) and (not unicode.isalpha(caracter))):
 					invalidos.append(caracter)	
 		
 		if len(invalidos) != 2:
