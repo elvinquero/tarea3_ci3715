@@ -66,11 +66,11 @@ form input[type="submit"] {
 }
 
 form input[type="button"] {
-  background: rgba(148, 186, 101, 0.7);
+  background: rgba(202, 225, 173, 0.7);
   box-shadow: 0 3px 0 0 rgba(123, 163, 73, 0.7);
   border-radius: 2px;
   border: none;
-  color: #fff;
+  color: #0000;
   cursor: pointer;
   display: block;
   font-size: 2em;
@@ -78,7 +78,7 @@ form input[type="button"] {
   margin: 2em 0 0;
   outline: none;
   padding: .8em 0;
-  text-shadow: 0 1px #68B25B;
+  text-shadow: 0 1px rgb(17, 41, 13);
 }
 form input[type="submit"]:hover {
   background: #94af65;
