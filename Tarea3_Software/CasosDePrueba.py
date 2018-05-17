@@ -9,6 +9,7 @@ from App.models import Seguridad
 class TestSeguridad(unittest.TestCase):
 		
 	#Caso 1 frontera inferior clave registro
+	#La primera vez que se ejecuto fallo
 	def testClave8(self):
 		seguridad = Seguridad()
 		email = "ana@gmail.com"
@@ -18,6 +19,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 1)
 		
 	#Caso 2 frontera superior clave registro
+	#La primera vez que se ejecuto fallo
 	def testClave16(self):
 		seguridad = Seguridad()
 		email = "anita@gmail.com"
@@ -28,6 +30,7 @@ class TestSeguridad(unittest.TestCase):
 
 
 	#Caso 3 esquina superior clave
+	#La primera vez que se ejecuto fallo
 	def testClaveMas16(self):
 		seguridad = Seguridad()
 		email = "anitaaaa@gmail.com"
@@ -37,6 +40,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
 		
 	#Caso 4 esquina inferior clave registro
+	#La primera vez que se ejecuto fallo
 	def testClaveMenos8(self):
 		seguridad = Seguridad()
 		email = "jose@gmail.com"
@@ -45,7 +49,8 @@ class TestSeguridad(unittest.TestCase):
 		
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
 		
-	#Caso 5 valido registro
+	#Caso 5 frontera registro
+	#La primera vez que se ejecuto no fallo
 	def testRegistroValido(self):
 		seguridad = Seguridad()
 		email = "angey@gmail.com"
@@ -55,6 +60,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 1)
 	
 	#Caso 6 esquina inferior correo registro
+	#La primera vez que se ejecuto fallo
 	def testCorreoSinArrob(self):
 		seguridad = Seguridad()
 		email = "gmail.com"
@@ -64,6 +70,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 1)
 		
 	#Caso 7 esquina superior correo registro
+	#La primera vez que se ejecuto fallo
 	def testCorreoMasArrob(self):
 		seguridad = Seguridad()
 		email = "lucia@hotmail@gmail.com"
@@ -73,6 +80,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 1)
 	
 	#Caso 8 esquina inferior correo registro
+	#La primera vez que se ejecuto fallo
 	def testCorreoSinPunto(self):
 		seguridad = Seguridad()
 		email = "paty@gmailcom"
@@ -82,6 +90,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 1)
 
 	#Caso 9 esquina inferior correo registro
+	#La primera vez que se ejecuto fallo
 	def testCorreoCaracteresEspeciales(self):
 		seguridad = Seguridad()
 		email = "sofia#97@gmail.com"
@@ -91,6 +100,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 1)
 	
 	#Caso 10 esquinas superiores registro
+	#La primera vez que se ejecuto fallo
 	def testCorreoYClaveInvalida(self):
 		seguridad = Seguridad()
 		email = "aura@@gmail.com"
@@ -100,6 +110,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 0)
 		
 	#Caso 11 esquinas inferiores registro
+	#La primera vez que se ejecuto fallo
 	def testClaveCaractesEsp(self):
 		seguridad = Seguridad()
 		email = "aura,@gmail.com"
@@ -109,6 +120,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 0)
 	
 	#Caso 12 esquina inferior clave registro
+	#La primera vez que se ejecuto no fallo
 	def testClaveSinDig(self):
 		seguridad = Seguridad()
 		email = "aura@gmail.com"
@@ -118,6 +130,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
 
 	#Caso 13 esquina inferior clave registro
+	#La primera vez que se ejecuto no fallo
 	def testClaveSinMayus(self):
 		seguridad = Seguridad()
 		email = "aura@gmail.com"
@@ -128,6 +141,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
 		
 	#Caso 14 esquina inferior clave registro
+	#La primera vez que se ejecuto no fallo
 	def testClaveSinMinus(self):
 		seguridad = Seguridad()
 		email = "juan123@gmail.com"
@@ -138,6 +152,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
 		
 	#Caso 15 malicioso registro
+	#La primera vez que se ejecuto no fallo
 	def testCorreoRepetido(self):
 		seguridad = Seguridad()
 		email = "elvin@gmail.com"
@@ -151,6 +166,7 @@ class TestSeguridad(unittest.TestCase):
 				nuevoUsuario2[0] == 0 and nuevoUsuario2[1] == -1)
 
 	#Caso 16 malicioso registro
+	#La primera vez que se ejecuto no fallo
 	def testClavesDistintas(self):
 		seguridad = Seguridad()
 		email = "sandra@gmail.com"
@@ -161,6 +177,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoUsuario[0] == -1 and nuevoUsuario[1] == 0)
 		
 	#Caso 17 malicioso ingreso
+	#La primera vez que se ejecuto no fallo
 	def testNoRegistrado(self):
 		seguridad = Seguridad()
 		email = "roxanne@gmail.com"
@@ -171,6 +188,7 @@ class TestSeguridad(unittest.TestCase):
 		assert (nuevoIngreso[0] == 0)
 		
 	#Caso 18 malicioso ingreso
+	#La primera vez que se ejecuto no fallo
 	def testIngresoClaveIncorrecta(self):
 		seguridad = Seguridad()
 		email = "alex@gmail.com"
@@ -184,6 +202,7 @@ class TestSeguridad(unittest.TestCase):
 				nuevoIngreso[0] == 0)
 		
 	#Caso 18 esquina superior de clave ingreso
+	#La primera vez que se ejecuto no fallo
 	def testIngresoClaveInvalida(self):
 		seguridad = Seguridad()
 		email = "alex@gmail.com"
@@ -197,6 +216,7 @@ class TestSeguridad(unittest.TestCase):
 				nuevoIngreso[0] == 0)
 		
 	#Caso 20 esquina superior ingreso
+	#La primera vez que se ejecuto no fallo
 	def testIngresoCorreoYClaveCaractesEsp(self):
 		seguridad = Seguridad()
 		email = "aur%a@hotmailcom"
