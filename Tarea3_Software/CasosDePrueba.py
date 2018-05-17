@@ -169,3 +169,38 @@ class TestSeguridad(unittest.TestCase):
 		nuevoIngreso = seguridad.IngresarUsuario(email, clave)
 		
 		assert (nuevoIngreso[0] == 0)
+		
+	#Caso 18 esquina clave ingreso
+	def testIngresoClaveIncorrecta(self):
+		seguridad = Seguridad()
+		email = "alex@gmail.com"
+		clave1 = "hola120LA"
+		clave2 = "holA12345"
+		
+		nuevoUsuario = seguridad.registrarUsuario(email, clave1, clave1)
+		nuevoIngreso = seguridad.IngresarUsuario(email, clave2)
+		
+		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 1 and
+				nuevoIngreso[0] == 0)
+		
+	#Caso 18 esquina clave ingreso
+	def testIngresoClaveInvalida(self):
+		seguridad = Seguridad()
+		email = "alex@gmail.com"
+		clave1 = "hola120LA"
+		clave2 = "holA-345"
+		
+		nuevoUsuario = seguridad.registrarUsuario(email, clave1, clave1)
+		nuevoIngreso = seguridad.IngresarUsuario(email, clave2)
+		
+		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 1 and
+				nuevoIngreso[0] == 0)
+		
+	#Caso 20 esquina ingreso
+	def testIngresoCorreoYClaveCaractesEsp(self):
+		seguridad = Seguridad()
+		email = "aur%a@hotmailcom"
+		clave = "hola-hola"
+		nuevoIngreso = seguridad.IngresarUsuario(email, clave)
+		
+		assert (nuevoIngreso[0] == 0)
