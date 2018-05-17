@@ -12,7 +12,7 @@ class TestSeguridad(unittest.TestCase):
 	def testClave8(self):
 		seguridad = Seguridad()
 		email = "ana@gmail.com"
-		clave= "holahola"
+		clave= "Hola1234"
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 1)
@@ -21,7 +21,7 @@ class TestSeguridad(unittest.TestCase):
 	def testClave16(self):
 		seguridad = Seguridad()
 		email = "anita@gmail.com"
-		clave= "holaholaholahola"
+		clave= "HolaHolaHola1234"
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 1)
@@ -31,7 +31,7 @@ class TestSeguridad(unittest.TestCase):
 	def testClaveMas16(self):
 		seguridad = Seguridad()
 		email = "anitaaaa@gmail.com"
-		clave= "holaholaholahola1"
+		clave= "holaholaholaholA1"
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 0)
@@ -49,7 +49,7 @@ class TestSeguridad(unittest.TestCase):
 	def testRegistroValido(self):
 		seguridad = Seguridad()
 		email = "angey@gmail.com"
-		clave= "hola1234"
+		clave= "Hola1234"
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
 		assert (nuevoUsuario[0] == 1 and nuevoUsuario[1] == 1)
@@ -58,7 +58,7 @@ class TestSeguridad(unittest.TestCase):
 	def testCorreoSinArrob(self):
 		seguridad = Seguridad()
 		email = "gmail.com"
-		clave= "holahola"
+		clave= "holA1ola"
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 1)
@@ -67,7 +67,7 @@ class TestSeguridad(unittest.TestCase):
 	def testCorreoMasArrob(self):
 		seguridad = Seguridad()
 		email = "lucia@hotmail@gmail.com"
-		clave= "holahola"
+		clave= "holaho1A"
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 1)
@@ -76,7 +76,7 @@ class TestSeguridad(unittest.TestCase):
 	def testCorreoSinPunto(self):
 		seguridad = Seguridad()
 		email = "paty@gmailcom"
-		clave= "holahola"
+		clave= "h01aHola"
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 1)
@@ -85,7 +85,7 @@ class TestSeguridad(unittest.TestCase):
 	def testCorreoCaracteresEspeciales(self):
 		seguridad = Seguridad()
 		email = "sofia#97@gmail.com"
-		clave= "holahola"
+		clave= "hoLah0la"
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 1)
@@ -94,7 +94,7 @@ class TestSeguridad(unittest.TestCase):
 	def testCorreoYClaveInvalida(self):
 		seguridad = Seguridad()
 		email = "aura@@gmail.com"
-		clave= "holahola123456789"
+		clave= "Holahola123456789"
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
 		
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 0)
@@ -105,5 +105,5 @@ class TestSeguridad(unittest.TestCase):
 		email = "aura,@gmail.com"
 		clave= "holametu."
 		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
-		
+
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 0)

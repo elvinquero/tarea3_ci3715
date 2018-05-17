@@ -14,6 +14,32 @@ class Seguridad:
 			newKey += chr(asciiLetter)
 		return newKey
 	
+	def verificarClave(self, key):
+		invalidos = [1, ""]
+		digitos = 0
+		mayus = 0
+		minus = 0
+		for i in range(len(key)): 
+			caracter = key[i]
+			if str.isdigit(caracter):
+				digitos += 1
+			elif str.isalpha(caracter):
+				if caracter.isupper():
+					mayus += 1
+				else:
+					minus += 1
+			else:
+				invalidos.append(caracter)
+		
+		if digitos < 1 or mayus < 1 or minus < 1 or mayus+minus < 3:
+			return [0, "Clave invalida: debe contener al menos un digito y al menos tres letras (al menos una mayuscula y una minuscula)"]
+		
+		elif len(invalidos) != 2:
+			invalidos[0] = 0
+			invalidos[1] = "Clave invalida: solo puede colocar valores alfa numericos"
+
+		return invalidos
+	
 	def verificarCorreo(self, mail):
 		invalidos = [1, ""]
 
@@ -65,6 +91,15 @@ class Seguridad:
 		if len(clave) < 8 or len(clave) > 16:
 			validKey = 0
 			mensajeKey = "Clave invalida: debe tener entre 8 y 16 caracteres"
+		else:
+			charInvalidos = self.verificarClave(clave)
+			if len(charInvalidos)==2:
+				if charInvalidos[0] < 1:
+					validKey = 0
+					mensajeKey = charInvalidos[1]	
+			else:
+				validKey = 0
+				mensajeKey = charInvalidosMail[1]
 
 		return [validMail, validKey, mensajeMail, mensajeKey]	
 	
