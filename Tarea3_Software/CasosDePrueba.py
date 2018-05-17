@@ -90,3 +90,20 @@ class TestSeguridad(unittest.TestCase):
 		
 		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 1)
 	
+	#Caso 10 esquinas superiores registro
+	def testCorreoYClaveInvalida(self):
+		seguridad = Seguridad()
+		email = "aura@@gmail.com"
+		clave= "holahola123456789"
+		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
+		
+		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 0)
+		
+	#Caso 11 esquinas inferiores registro
+	def testClaveCaractesEsp(self):
+		seguridad = Seguridad()
+		email = "aura,@gmail.com"
+		clave= "holametu."
+		nuevoUsuario = seguridad.registrarUsuario(email, clave, clave)
+		
+		assert (nuevoUsuario[0] == 0 and nuevoUsuario[1] == 0)
